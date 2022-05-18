@@ -1,22 +1,15 @@
-import getopt
-import sys
+import argparse
 
 
-def parse_argument(argv):
-    destination_argument = ""
-    help_message = "Correct usage:\n{0} -d <destination>".format(argv[0])
+def parse_argument():
+    arguments_parser = argparse.ArgumentParser(description="return the most active cookie for specified day")
+    arguments_parser.add_argument("cookie_file_path", help="the file path of the cookie file")
+    arguments_parser.add_argument("-d", metavar="date", help="the date you are searching for")
+    arguments = arguments_parser.parse_args()
 
-    try:
-        opts, args = getopt.getopt(argv[1:], "hd:", ["help", "destination="])
-    except:
-        print(help_message)
-        sys.exit(2)
+    # If not date passed in
+    if not arguments.d:
+        print("please pass the date that you are searching for after -d")
+        arguments_parser.print_usage()
 
-    for opt, arg in opts:
-        if opt in ("-h", "--help"):
-            print(help_message)  # print the help message
-            sys.exit(2)
-        elif opt in ("-d", "-dest"):
-            destination_argument = arg
-
-    print('dest:', destination_argument)
+    return arguments.cookie_file_path, arguments.d
