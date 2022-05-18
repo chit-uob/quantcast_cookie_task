@@ -1,5 +1,4 @@
 import argparse
-import traceback
 
 
 def validate(cookie_file_path, date):
