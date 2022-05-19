@@ -4,10 +4,14 @@ def handle_file(file_path, date):
     with open(file_path, "r") as f:
         # skip first line
         f.readline()
-        for line in f.readlines():
-            cookie, date_time = line.split(",")
-            if date_time[:10] == date:
-                cookies_hashmap[cookie] = cookies_hashmap.get(cookie, 0) + 1
+        try:
+            for line in f.readlines():
+                cookie, date_time = line.split(",")
+                if date_time[:10] == date:
+                    cookies_hashmap[cookie] = cookies_hashmap.get(cookie, 0) + 1
+        except:
+            print("cookies file is incorrectly formatted")
+            return
 
         if len(cookies_hashmap) == 0:
             print(f"No cookie on '{date}'")
