@@ -27,10 +27,10 @@ def handle_file(file_path, date):
             print(f"No cookie on '{date}'")
             return
 
-        print_most_active_cookies(cookies_hashmap)
+        return find_most_active_cookies(cookies_hashmap)
 
 
-def print_most_active_cookies(cookies_hashmap):
+def find_most_active_cookies(cookies_hashmap):
     max_value = -1
     item_list = []
     for key, value in cookies_hashmap.items():
@@ -39,5 +39,4 @@ def print_most_active_cookies(cookies_hashmap):
             item_list = [key]
         elif value == max_value:
             item_list.append(key)
-    for item in item_list:
-        print(item)
+    return item_list

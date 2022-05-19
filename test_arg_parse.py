@@ -25,7 +25,7 @@ class Test(TestCase):
         self.assertFalse(arg_parse.validate_cookie_path("not_exist.txt"))
 
     def test_validate_cookie_path_valid_path(self):
-        self.assertTrue(arg_parse.validate_cookie_path("test.txt"))
+        self.assertTrue(arg_parse.validate_cookie_path("test.csv"))
 
     def test_parse_argument_missing_cookie_path(self):
         with self.assertRaises(SystemExit) as system_exit:
@@ -37,11 +37,11 @@ class Test(TestCase):
     def test_parse_argument_missing_date(self):
         with self.assertRaises(SystemExit) as system_exit:
             with patch('sys.stderr', new=StringIO()) as fake_out:
-                arg_parse.parse_argument(['test.txt'])
+                arg_parse.parse_argument(['test.csv'])
         self.assertEqual(system_exit.exception.code, 2)
         self.assertIn("please pass the date that you are searching for after -d\n", fake_out.getvalue())
 
     def test_parse_argument_correct(self):
-        path, date = arg_parse.parse_argument(['test.txt', '-d', '2018-12-08'])
-        self.assertEqual('test.txt', path)
+        path, date = arg_parse.parse_argument(['test.csv', '-d', '2018-12-08'])
+        self.assertEqual('test.csv', path)
         self.assertEqual('2018-12-08', date)

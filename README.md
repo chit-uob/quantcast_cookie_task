@@ -2,7 +2,7 @@
 return the most active cookie for specified day
 
 ## Sample usage
-data:
+data `cookie_log.csv`:
 ```
 cookie,timestamp
 AtY0laUfhglK3lC7,2018-12-09T14:19:00+00:00
