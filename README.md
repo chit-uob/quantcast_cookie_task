@@ -18,3 +18,6 @@ input:\
 `$ ./most_active_cookie cookie_log.csv -d 2018-12-09`\
 output:\
 `AtY0laUfhglK3lC7`
+
+## Logging
+the results will be logged in `usage.log`, so you can check there if you forgot the result.
