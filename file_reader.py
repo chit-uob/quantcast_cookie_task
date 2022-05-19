@@ -4,11 +4,21 @@ def handle_file(file_path, date):
     with open(file_path, "r") as f:
         # skip first line
         f.readline()
+
+        # to store whether we have found a matching date yet
+        match_flag = False
+
         try:
             for line in f.readlines():
                 cookie, date_time = line.split(",")
                 if date_time[:10] == date:
+                    match_flag = True
                     cookies_hashmap[cookie] = cookies_hashmap.get(cookie, 0) + 1
+                else:
+                    if match_flag:
+                        # At this point, there were already some matching cookies, so that if this cookies does not
+                        # match, it means the following cookies will not match as well, so we break
+                        break
         except:
             print("cookies file is incorrectly formatted")
             return
