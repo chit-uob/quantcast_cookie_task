@@ -1,5 +1,6 @@
-import sys
+#!/usr/bin/python
 
+import sys
 import file_reader
 from arg_parse import parse_argument
 
