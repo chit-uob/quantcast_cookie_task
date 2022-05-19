@@ -10,7 +10,7 @@ if __name__ == "__main__":
     cookie_path, date_string = parse_argument(sys.argv[1:])
     logging.info(f"Called with arguments {sys.argv[1:]}")
     most_active_cookie_list = file_reader.handle_file(cookie_path, date_string)
-    logging.info(f"Results are:\n")
+    logging.info(f"Results are:")
     for cookie in most_active_cookie_list:
         print(cookie)
         logging.info(cookie)
